@@ -8,7 +8,8 @@ public class CalculatorForFunctionalInterfaces {
     }
 
     public static Operation<Double> getOperation(Scanner scanner) {
-        return switch (scanner.nextLine()) {
+        String operation = scanner.nextLine();
+        return switch (operation) {
             case "*" -> (value1, value2) -> {
                 System.out.println("Multiplication");
                 return value1 * value2;
@@ -27,6 +28,7 @@ public class CalculatorForFunctionalInterfaces {
                 return value1 - value2;
             };
             default -> (value1, value2) -> {
+                if (operation.equals("exit")) System.exit(505);
                 System.out.println("It's not operation!");
                 return 0.0;
             };
@@ -34,6 +36,7 @@ public class CalculatorForFunctionalInterfaces {
     }
 
     public static void main(String[] args) throws Exception {
+        System.out.println("///   If you want to complete the app, you should write the 'exit' ///\n");
         System.out.println("First number:");
         Double number1 = Double.valueOf(new Scanner(System.in).nextLine());
         System.out.println("Second number:");
